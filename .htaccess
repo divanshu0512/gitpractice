@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /  # If your app is hosted at the root of the domain
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^eezib.*$ /index.html [L]
+  RewriteRule ^cards.*$ /index.html [L]
+  RewriteRule ^categories.*$ /index.html [L]
+  RewriteRule ^voucher.*$ /index.html [L]
+  RewriteRule ^categories.*$ /index.html [L]
+</IfModule>
