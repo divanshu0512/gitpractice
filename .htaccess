@@ -1,12 +1,2 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /  # If your app is hosted at the root of the domain
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^eezib.*$ /index.html [L]
-  RewriteRule ^cards.*$ /index.html [L]
-  RewriteRule ^categories.*$ /index.html [L]
-  RewriteRule ^voucher.*$ /index.html [L]
-  RewriteRule ^categories.*$ /index.html [L]
-</IfModule>
+RewriteEngine On RewriteBase **%{ENV:REACT_APP_SUBPATH}/** RewriteCond %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_FILENAME} !-d RewriteCond %{REQUEST_FILENAME} !-l RewriteRule . **/%{ENV:REACT_APP_SUBPATH}/**index.html [L]
+In index.tsx file we mention that BrowserRouter basename=${ENV:REACT_APP_SUBPATH}
