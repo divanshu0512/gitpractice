@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import image from "../images/eezib2.png"
 
 function Categories() {
-    const [value, setValue] = React.useState([]);
+    const [value, setValue] = React.useState();
     const [page, setPage] = React.useState(1);
     const [auth, setAuth] = React.useState("");
     const [id, setId] = React.useState("");
@@ -25,7 +25,7 @@ function Categories() {
         const datas = Object.values(respo);
         const values = datas[0]
         const token = values.token;
-        setAuth(token)
+        setAuth([token])
         const name = values.value;
         setResp(name)
         console.log("resp : ", values);
@@ -47,9 +47,8 @@ function Categories() {
     const handleSearch = () => {
         return value?.filter((data) =>
             data.categories.toLowerCase().includes(resp) ||
-            data.categories.toUpperCase().includes(resp)
-        )
-    }
+            data.categories.toUpperCase().includes(resp)    
+        ) }
 
     React.useEffect(() => {
         getData()
@@ -91,12 +90,11 @@ function Categories() {
 
                             
                             <Paper onClick={() => navigate(`/voucher`, { state: { data: { row, auth, id } } })} elevation={8} sx={{ marginTop: { lg: "2rem", md: "1.8rem", xs: "0rem" }, width: { lg: 270, md: 250, sm: 230, xs: 140 }, position:'relative' , display:'inline-block' ,padding: "0.6rem", borderRadius: 2 }} >
-                                 {
-                                                        row.discount > 0 ? 
-                                                        <Typography sx={{ position:"absolute" , right:0 , border:{lg:'2px solid white' , xs:"1px solid white"} , padding:{lg:"0rem 1.2rem" , xs:"0rem 0.6rem"} , borderRadius:'0.3rem'  , fontFamily:"montserrat" , fontWeight:500 ,background: 'linear-gradient(230deg, #08C8F6, #4D5DFB)' , color:'#fffb00' , fontSize:{lg:"16px" , xs:"12px"} }} >{row.discount}% off</Typography> :
-                                                        null
-
-                                                    }
+                                {
+                                  row.discount > 0 ? 
+                                  <Typography sx={{ position:"absolute" , right:0 , border:{lg:'2px solid white' , xs:"1px solid white"} , padding:{lg:"0rem 1.2rem" , xs:"0rem 0.6rem"} , borderRadius:'0.3rem'  , fontFamily:"montserrat" , fontWeight:500 ,background: 'linear-gradient(230deg, #08C8F6, #4D5DFB)' , color:'#fffb00' , fontSize:{lg:"16px" , xs:"12px"} }} >{row.discount}% off</Typography> :
+                                  null
+                                }
                             <Paper key={row.name} className='scale' elevation={8} sx={{ overflow: "hidden", width: { lg: 270, md: 250, sm: 230, xs: 140 }, height: { lg: 170, md: 170, sm: 130, xs: 85 }, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }} >
                                 <Box key={row.productId} component="img" src={row.imageUrl} sx={{ width: { lg: 270, md: 250, sm: 230, xs: 140 }, borderRadius: 2 }} />
                             </Paper>

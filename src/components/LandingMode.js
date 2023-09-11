@@ -12,9 +12,9 @@ const LandingMode = () => {
     const handleClick = (e) => {
        setFilter(e.target.title);
        window.scroll(0,480)
+       console.log("filter : ",filter)
         
     }
-    console.log(filter)
   return (
     <Box sx={{marginTop:'5rem' ,}} >
     <Typography sx={{textAlign:'center' , fontFamily:'montserrat' , fontWeight:600, fontSize:{lg:"1.5rem",md:"1.3rem",xs:"1.2rem"} }}  >Online Shopping Catagories</Typography>

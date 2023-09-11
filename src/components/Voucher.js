@@ -129,7 +129,7 @@ function Voucher() {
         setOpen(true);
         setProcess(true);
         handleAmount();
-
+        console.log("jhdfwhgefhwvefhwfbw : "  , totalQuantity)
     }
 
     const placeOrder = async() => {
@@ -405,7 +405,7 @@ function Voucher() {
 {/* *********************************************************** QUANTITY FIELDN *************************************************** */}
 
                             {
-                                value ? <TextField label="Quantity" focused value={totalQuantity} inputProps={{ style: { fontFamily: 'montserrat', fontWeight: 500 } }} /> :  <TextField label="Quantity" onChange={(e) => totalQuantity ? setQuantity(null) :  setQuantity(e.target.value)} inputProps={{ style: { fontFamily: 'montserrat', fontWeight: 500 } }} />
+                                value ?  <TextField label="Quantity" focused value={totalQuantity} inputProps={{ style: { fontFamily: 'montserrat', fontWeight: 500 } }} /> :  <TextField label="Quantity" onChange={(e) => totalQuantity ? setQuantity(null) :  setQuantity(e.target.value)} inputProps={{ style: { fontFamily: 'montserrat', fontWeight: 500 } }} />
                             }
 
                                         {/* <TextField label="Quantity" onChange={(e) => setQuantity(e.target.value)} inputProps={{ style: { fontFamily: 'montserrat', fontWeight: 500 } }} /> */}
@@ -437,7 +437,7 @@ function Voucher() {
                             } */}
 
                                         {
-                                            user ? denomination && quantity || value ? <Button onClick={() => purchaseOrder()} variant='contained' sx={{ fontFamily: 'montserrat', fontWeight: 500 }} > Purchase @ ₹{ totalQuantity ?  denomination*totalQuantity : denomination *quantity }</Button> : <Button disabled variant='contained' sx={{ fontFamily: 'montserrat', fontWeight: 500 }} > Purchase </Button> :
+                                            user ? denomination && !isNaN(quantity) || value ? <Button onClick={() => purchaseOrder()} variant='contained' sx={{ fontFamily: 'montserrat', fontWeight: 500 }} > Purchase @ ₹{ totalQuantity ?  denomination*totalQuantity : denomination *quantity }</Button> : <Button disabled variant='contained' sx={{ fontFamily: 'montserrat', fontWeight: 500 }} > Purchase </Button> :
                                                 <Button onClick={() => window.location.replace("https://eezib.in/login")} variant='contained' sx={{ fontFamily: 'montserrat', fontWeight: 500 }} > login </Button>
                                         }
 

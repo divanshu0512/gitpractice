@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { SnoozeRounded } from '@mui/icons-material';
 
 
 
@@ -17,6 +18,11 @@ function CashBackOffer({ someData }) {
     const [userName  , setUserName] = React.useState('');
 
     const location = useLocation();
+    
+
+    React.useEffect(() => {
+        console.log("someData : ",someData);
+    },[someData])
 
     async function tokenData() {
         const res = location.state.data;
@@ -95,10 +101,11 @@ function CashBackOffer({ someData }) {
             data.name.toUpperCase().includes(search)
         )
     }
+    
 
     const handleCategory = () => {
         return data.filter((data) =>
-            data.categories.toLowerCase().includes(someData) ||
+            data.categories.toLowerCase().includes([someData]) ||
             data.categories.toUpperCase().includes(someData)
         )
     }
@@ -124,7 +131,7 @@ function CashBackOffer({ someData }) {
                             <Box sx={{ marginTop: "2rem", display: 'grid', gridTemplateColumns: { lg: "repeat(4,1fr)", sm: "repeat(2,1fr)", md: "repeat(2,1fr)", xs: "repeat(2,1fr)" }, gridColumnGap: { lg: '1.6rem', sm: "2rem", md: '2rem', xs: '1.3rem' }, gridRowGap: '1rem' }} >
 
 
-                                {handleCategory()?.slice((page - 1) * 16, (page - 1) * 16 + 16).map((row) => {
+                            {handleCategory()?.slice((page - 1) * 16, (page - 1) * 16 + 16).map((row) => {
                                     return (
                                         <Box sx={{ marginTop: { lg: "3rem", md: "1.8rem", xs: "0rem" } }} >
 
