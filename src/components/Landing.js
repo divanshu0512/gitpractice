@@ -198,13 +198,13 @@ function Landing() {
 
         <AppBar position='sticky' className={scrolling ? 'scrolling' : null} style={appBarStyle} >
           <Toolbar >
-            <IconButton
+            {/* <IconButton
               size="small"
               edge="start"
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}>
-            </IconButton>
+            </IconButton> */}
             <Box sx={{ width: { lg: "10rem", xs: "8rem" } ,padding: { lg: "0.6rem 0rem 0.6rem 0rem", xs: "0.3rem 0rem 0.3rem 0rem" } }} component='img' src={imageSource} />
             <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto', cursor: 'pointer' }} id="cursor" >
               {/* <Typography sx={{ fontFamily:'montserrat',fontWeight:500,fontSize:"1.1rem" }} > {name}</Typography> */}
